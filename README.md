@@ -3,7 +3,7 @@ _Nuevo repositorio con todo lo del anterior pero solo los archivos necesarios._
 
 Asginatura de Proyecto 1 de primero de carrera (desarrollo de videojuegos de la universidad Complutense de Madrid - UCM)
 
-Grupo 16:  
+Grupo 10:  
 -Ana Fabiola  
 -Jorge  
 -Ricky  
