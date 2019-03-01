@@ -10,6 +10,9 @@ public class PingPongMoveBeta : MonoBehaviour {
     private Vector2 finalPos;
     private Vector2 dir;
     int state;
+   //Rigidbody2D rb;
+
+
 
     void Start()
     {
@@ -17,6 +20,7 @@ public class PingPongMoveBeta : MonoBehaviour {
         finalPos = pointB.position;
         state = GetState(initialPos,finalPos);
         dir = new Vector2(finalPos.x - initialPos.x, finalPos.y - initialPos.y);
+        //rb = this.gameObject.GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -24,9 +28,11 @@ public class PingPongMoveBeta : MonoBehaviour {
         {
             speed *= -1;
         }
-        transform.Translate(speed * Time.deltaTime * dir);
+        transform.Translate(speed * Time.deltaTime * dir.normalized);
+        //rb.velocity = speed * dir.normalized;
     }
 
+    
     static bool ChangeSpeed(Vector2 a, Vector2 b, Vector2 position, int state)
     {
         switch (state)
