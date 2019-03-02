@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed, jumpForce;
+    float speedX;
     bool jump;
     Rigidbody2D rb;
 
@@ -17,8 +18,8 @@ public class PlayerMovement : MonoBehaviour
     //En el Update() declaramos los "controles" del jugador, para desplazarse en el eje X y para saltar en el eje Y
     void Update()
     {
-        if (Input.GetKey(KeyCode.D)) rb.velocity = new Vector2(speed, rb.velocity.y);
-        else if (Input.GetKey(KeyCode.A)) rb.velocity = new Vector2(-speed, rb.velocity.y);
+        //solo se podrá mover con los botones a y d, editado desde el InputManager
+        speedX = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.01f) { jump = true; }
     }
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     //Declaramos la velocidad del jugador en el eje X y en el eje Y
     void FixedUpdate()
     {
+        rb.velocity = new Vector2(speed * speedX, rb.velocity.y);
+
         if (jump)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
