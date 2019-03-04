@@ -20,7 +20,15 @@ public class BumpOnTop : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-
+            else
+            {
+                PlayerDead playerDead = other.gameObject.GetComponent<PlayerDead>();
+                if (playerDead)
+                {
+                    playerDead.PlayerOnDead();
+                }
+            }
         }
+
     }
 }
